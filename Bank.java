@@ -14,8 +14,6 @@ public class Bank {
 
     public void fundTransfer(Bank OtherAccount, int Amount){
         ensureSufficientFundsAreAvailable(this);
-        ensureSufficientFundsAreAvailable(OtherAccount);
-
         this.debitFromAccount(Amount);
         OtherAccount.creditToAccount(Amount);
 
