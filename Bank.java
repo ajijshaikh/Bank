@@ -12,15 +12,23 @@ public class Bank {
         this.AccountName = AccountName;
     }
 
-    public void fundTransfer(Bank SecondAccount, int Amount){
+    public void fundTransfer(Bank OtherAccount, int Amount){
         ensureSufficientFundsAreAvailable(this);
-        ensureSufficientFundsAreAvailable(SecondAccount);
+        ensureSufficientFundsAreAvailable(OtherAccount);
 
-        SecondAccount.Balance += Amount;
-        this.Balance -= Amount;
+        this.debitFromAccount(Amount);
+        OtherAccount.creditToAccount(Amount);
 
         System.out.println("First account balance : " + this.Balance);
-        System.out.println("Second account balance : " + SecondAccount.Balance);
+        System.out.println("Second account balance : " + OtherAccount.Balance);
+    }
+
+    private void debitFromAccount(int Amount) {
+        this.Balance -= Amount;
+    }
+
+    private void creditToAccount(int Amount){
+        this.Balance += Amount;
     }
 
     private void ensureSufficientFundsAreAvailable(Bank Account){
