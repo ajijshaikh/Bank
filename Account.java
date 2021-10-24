@@ -39,9 +39,11 @@ public class Account {
 
     public static void main(String[] args) {
 
-        Account SourceAccount = new Account(12345,700);
-        Account DestinationAccount = new Account(54321,300);
+        Account FirstAccount = new Account(12345,700);
+        Account SecondAccount = new Account(54321,1300);
 
-        SourceAccount.fundTransfer(DestinationAccount,500);
+        SecondAccount.fundTransfer(FirstAccount, 300);
+        FirstAccount.fundTransfer(SecondAccount, 300);
+
     }
 }
